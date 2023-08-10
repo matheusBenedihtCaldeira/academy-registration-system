@@ -1,6 +1,8 @@
 package com.cloudfy.academyregistrationsystem.controllers.operator;
 
 import com.cloudfy.academyregistrationsystem.models.entities.Operator;
+import com.cloudfy.academyregistrationsystem.services.operator.IndexOperatorsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +16,12 @@ import java.util.List;
 @RequestMapping(value = "/operators")
 public class IndexOperatorsController {
 
+    @Autowired
+    private IndexOperatorsService service;
+
     @GetMapping
-    public ResponseEntity<Operator> index(){
-        Operator operator = new Operator(1L, "Matheus", "matheus@teste.com","EBYO", "123456");
-        return ResponseEntity.ok().body(operator);
+    public ResponseEntity<List<Operator>> index(){
+        List<Operator> list = service.index();
+        return ResponseEntity.ok().body(list);
     }
 }
