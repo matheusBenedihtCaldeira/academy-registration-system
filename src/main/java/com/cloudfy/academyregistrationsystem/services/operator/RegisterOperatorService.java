@@ -18,7 +18,7 @@ public class RegisterOperatorService {
     }
 
     public Operator fromDTO(OperatorDTO data){
-        return new Operator(data.getId(), data.getName(), data.getEmail(), data.getOperatorKey(), data.getPassword());
+        return new Operator(data.getId(),data.getName(),data.getEmail(),data.getOperatorKey(),data.getPassword(),data.getRole());
     }
 
 }

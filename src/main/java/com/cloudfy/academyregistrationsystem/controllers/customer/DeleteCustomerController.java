@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RestController
-@RequestMapping(value = "/delete/customer")
+@RequestMapping(value = "/customer/delete")
 public class DeleteCustomerController {
 
     @Autowired

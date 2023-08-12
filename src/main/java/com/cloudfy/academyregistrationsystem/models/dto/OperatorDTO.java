@@ -1,5 +1,6 @@
 package com.cloudfy.academyregistrationsystem.models.dto;
 
+import com.cloudfy.academyregistrationsystem.models.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -20,4 +21,6 @@ public class OperatorDTO {
     private String operatorKey;
     @NotBlank
     private String password;
+    @NotBlank
+    private Role role;
 }
