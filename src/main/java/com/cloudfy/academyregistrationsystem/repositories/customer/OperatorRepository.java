@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OperatorRepository extends JpaRepository<Operator, Long> {
 
-    UserDetails findByEmail(String email);
+    Operator findByEmail(String email);
 }

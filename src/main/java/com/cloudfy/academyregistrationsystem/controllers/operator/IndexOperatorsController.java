@@ -13,13 +13,13 @@ import java.util.List;
 
 @Controller
 @RestController
-@RequestMapping(value = "/operators")
+@RequestMapping(value = "/operator")
 public class IndexOperatorsController {
 
     @Autowired
     private IndexOperatorsService service;
 
-    @GetMapping
+    @GetMapping(value = "/index")
     public ResponseEntity<List<Operator>> index(){
         List<Operator> list = service.index();
         return ResponseEntity.ok().body(list);

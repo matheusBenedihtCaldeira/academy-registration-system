@@ -31,6 +31,10 @@ public class Operator implements UserDetails {
         if(this.role == Role.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_OPERATOR"));
         else return List.of(new SimpleGrantedAuthority("ROLE_OPERATOR"));
     }
+    @Override
+    public String getPassword(){
+        return password;
+    }
 
     @Override
     public String getUsername() {
@@ -39,21 +43,21 @@ public class Operator implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }
