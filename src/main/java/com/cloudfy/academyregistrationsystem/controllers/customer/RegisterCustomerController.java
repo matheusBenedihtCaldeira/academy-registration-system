@@ -16,7 +16,7 @@ import java.net.URI;
 
 @Controller
 @RestController
-@RequestMapping(value = "/customer/register")
+@RequestMapping(value = "/register/customer")
 public class RegisterCustomerController {
 
     @Autowired

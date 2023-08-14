@@ -2,6 +2,8 @@ package com.cloudfy.academyregistrationsystem.controllers.operator;
 
 import com.cloudfy.academyregistrationsystem.models.dto.OperatorAuthenticationDTO;
 import com.cloudfy.academyregistrationsystem.infra.security.TokenService;
+import com.cloudfy.academyregistrationsystem.models.dto.OperatorLoginResponseDTO;
+import com.cloudfy.academyregistrationsystem.models.entities.Operator;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +30,9 @@ public class AuthenticationController {
     public ResponseEntity  login (@RequestBody @Valid OperatorAuthenticationDTO data){
         var user = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(user);
-        return ResponseEntity.ok().build();
+
+        var token = tokenService.generateToken((Operator) auth.getPrincipal());
+        return ResponseEntity.ok(new OperatorLoginResponseDTO(token));
     }
 
 }
