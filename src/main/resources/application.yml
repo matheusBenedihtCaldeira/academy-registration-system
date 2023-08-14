@@ -8,3 +8,7 @@ spring:
     console:
       enabled: true
       path: /h2-console
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:secret-key}
