@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RestController
-@RequestMapping(value = "/operator/update")
+@RequestMapping(value = "/update/operator")
 public class UpdateOperatorCotroller {
 
     @Autowired

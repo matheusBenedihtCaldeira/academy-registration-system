@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RestController
-@RequestMapping("/operator/delete")
+@RequestMapping("/delete/operator")
 public class DeleteOperatorController {
 
     @Autowired
