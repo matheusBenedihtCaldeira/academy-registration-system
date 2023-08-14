@@ -1,8 +1,8 @@
-package com.cloudfy.academyregistrationsystem.controllers.operator;
+package com.cloudfy.academyregistrationsystem.controllers.authentication;
 
-import com.cloudfy.academyregistrationsystem.models.dto.OperatorAuthenticationDTO;
+import com.cloudfy.academyregistrationsystem.models.dto.AuthenticationDTO;
 import com.cloudfy.academyregistrationsystem.infra.security.TokenService;
-import com.cloudfy.academyregistrationsystem.models.dto.OperatorLoginResponseDTO;
+import com.cloudfy.academyregistrationsystem.models.dto.LoginResponseDTO;
 import com.cloudfy.academyregistrationsystem.models.entities.Operator;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +27,12 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping("/operator")
-    public ResponseEntity  login (@RequestBody @Valid OperatorAuthenticationDTO data){
+    public ResponseEntity  login (@RequestBody @Valid AuthenticationDTO data){
         var user = new UsernamePasswordAuthenticationToken(data.email(), data.password());
         var auth = this.authenticationManager.authenticate(user);
 
         var token = tokenService.generateToken((Operator) auth.getPrincipal());
-        return ResponseEntity.ok(new OperatorLoginResponseDTO(token));
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
 }

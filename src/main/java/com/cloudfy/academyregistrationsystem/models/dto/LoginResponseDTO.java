@@ -1,4 +1,4 @@
 package com.cloudfy.academyregistrationsystem.models.dto;
 
-public record OperatorLoginResponseDTO(String token) {
+public record LoginResponseDTO(String token) {
 }

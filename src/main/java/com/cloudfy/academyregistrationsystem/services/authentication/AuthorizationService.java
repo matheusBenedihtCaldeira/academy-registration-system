@@ -1,4 +1,4 @@
-package com.cloudfy.academyregistrationsystem.services.operator;
+package com.cloudfy.academyregistrationsystem.services.authentication;
 
 import com.cloudfy.academyregistrationsystem.repositories.customer.OperatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OperatorAuthorizationService implements UserDetailsService {
+public class AuthorizationService implements UserDetailsService {
 
     @Autowired
     private OperatorRepository repository;
