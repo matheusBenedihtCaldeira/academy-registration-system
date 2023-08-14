@@ -22,7 +22,7 @@ public class SecurityConfiguration{
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(new AntPathRequestMatcher("/register/operator", HttpMethod.POST.name())).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/login", HttpMethod.POST.name())).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/login/operator", HttpMethod.POST.name())).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/operator/index", HttpMethod.GET.name())).permitAll()
                         .anyRequest().authenticated()
                 ).build();

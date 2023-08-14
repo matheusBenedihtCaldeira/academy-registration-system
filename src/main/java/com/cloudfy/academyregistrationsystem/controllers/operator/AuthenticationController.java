@@ -1,14 +1,12 @@
 package com.cloudfy.academyregistrationsystem.controllers.operator;
 
-import com.cloudfy.academyregistrationsystem.models.dto.AuthenticationDTO;
-import com.cloudfy.academyregistrationsystem.models.entities.Operator;
-import com.cloudfy.academyregistrationsystem.services.operator.TokenService;
+import com.cloudfy.academyregistrationsystem.models.dto.OperatorAuthenticationDTO;
+import com.cloudfy.academyregistrationsystem.infra.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RestController
+@RequestMapping("/login")
 public class AuthenticationController {
 
     @Autowired
@@ -25,16 +24,11 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
-    @PostMapping("/login")
-    public String  login (@RequestBody @Valid AuthenticationDTO data){
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-                new UsernamePasswordAuthenticationToken(data.email(), data.password());
-        Authentication authenticate = this.authenticationManager
-                .authenticate(usernamePasswordAuthenticationToken);
-
-        var user = (Operator)authenticate.getPrincipal();
-
-        return tokenService.generateToken(user);
+    @PostMapping("/operator")
+    public ResponseEntity  login (@RequestBody @Valid OperatorAuthenticationDTO data){
+        var user = new UsernamePasswordAuthenticationToken(data.email(), data.password());
+        var auth = this.authenticationManager.authenticate(user);
+        return ResponseEntity.ok().build();
     }
 
 }
