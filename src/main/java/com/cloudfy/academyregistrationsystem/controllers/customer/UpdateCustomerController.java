@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RestController
-@RequestMapping(value = "/customer/update")
+@RequestMapping(value = "/update/customer")
 public class UpdateCustomerController {
 
     @Autowired

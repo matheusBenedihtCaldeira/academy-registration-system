@@ -19,7 +19,7 @@ public class IndexCustomersController {
     @Autowired
     private IndexCustomersService service;
 
-    @GetMapping
+    @GetMapping(value = "/index")
     public ResponseEntity<List<Customer>> index() {
         List<Customer> list = service.index();
         return ResponseEntity.ok().body(list);

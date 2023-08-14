@@ -29,7 +29,11 @@ public class SecurityConfiguration{
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(new AntPathRequestMatcher("/register/operator", HttpMethod.POST.name())).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/login/operator", HttpMethod.POST.name())).permitAll()
-                        .requestMatchers(new AntPathRequestMatcher("/register/customer", HttpMethod.POST.name())).hasRole("ADMIN")
+                        .requestMatchers(new AntPathRequestMatcher("/register/customer", HttpMethod.POST.name())).hasRole("OPERATOR")
+                        .requestMatchers(new AntPathRequestMatcher("/update/customer/{id}", HttpMethod.POST.name())).hasRole("OPERATOR")
+                        .requestMatchers(new AntPathRequestMatcher("/delete/customer/{id}", HttpMethod.POST.name())).hasRole("OPERATOR")
+                        .requestMatchers(new AntPathRequestMatcher("/customer/index", HttpMethod.POST.name())).hasRole("OPERATOR")
+                        .requestMatchers(new AntPathRequestMatcher("/customer/{id}", HttpMethod.POST.name())).hasRole("OPERATOR")
                         .requestMatchers(new AntPathRequestMatcher("/operator/index", HttpMethod.GET.name())).hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
