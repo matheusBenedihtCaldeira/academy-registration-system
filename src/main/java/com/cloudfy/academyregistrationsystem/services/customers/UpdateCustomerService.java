@@ -3,8 +3,11 @@ package com.cloudfy.academyregistrationsystem.services.customers;
 import com.cloudfy.academyregistrationsystem.models.dto.CustomerDTO;
 import com.cloudfy.academyregistrationsystem.models.entities.Customer;
 import com.cloudfy.academyregistrationsystem.repositories.customer.CustomerRepository;
+import com.cloudfy.academyregistrationsystem.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UpdateCustomerService {
@@ -26,8 +29,8 @@ public class UpdateCustomerService {
     }
 
     public Customer findById(Long id){
-        Customer customer = repository.findById(id).get();
-        return customer;
+        Optional<Customer> customer = repository.findById(id);
+        return customer.orElseThrow(() -> new ObjectNotFoundException("Customer not found!"));
     }
     public Customer fromDTO(CustomerDTO data){
         return new Customer(data.getId(),data.getName(),data.getEmail(),data.getCpf(),data.getPassword());

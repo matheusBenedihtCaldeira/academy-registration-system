@@ -3,8 +3,11 @@ package com.cloudfy.academyregistrationsystem.services.operator;
 import com.cloudfy.academyregistrationsystem.models.dto.OperatorDTO;
 import com.cloudfy.academyregistrationsystem.models.entities.Operator;
 import com.cloudfy.academyregistrationsystem.repositories.customer.OperatorRepository;
+import com.cloudfy.academyregistrationsystem.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UpdateOperatorService {
@@ -26,8 +29,8 @@ public class UpdateOperatorService {
     }
 
     public Operator findById(Long id){
-        Operator operator = repository.findById(id).get();
-        return operator;
+        Optional<Operator> operator = repository.findById(id);
+        return operator.orElseThrow(() -> new ObjectNotFoundException("Operator not found!"));
     }
 
     public Operator fromDTO(OperatorDTO data){
