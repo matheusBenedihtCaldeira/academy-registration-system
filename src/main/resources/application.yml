@@ -17,4 +17,4 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/db_academy_registration_system
     username: postgres
-    password: 123456789
+    password: 62312898

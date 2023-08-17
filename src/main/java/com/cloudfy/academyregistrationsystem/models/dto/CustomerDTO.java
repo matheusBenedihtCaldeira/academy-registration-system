@@ -15,6 +15,8 @@ public class CustomerDTO {
     @NotBlank
     private String email;
     @NotBlank
+    private String image;
+    @NotBlank
     private String cpf;
     @NotBlank
     private String password;

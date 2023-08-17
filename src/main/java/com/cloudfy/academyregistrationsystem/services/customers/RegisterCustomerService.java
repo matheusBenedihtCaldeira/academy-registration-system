@@ -18,7 +18,7 @@ public class RegisterCustomerService {
     }
 
     public Customer fromDTO(CustomerDTO data){
-        Customer customer = new Customer(data.getId(), data.getName(), data.getEmail(), data.getCpf(), data.getPassword());
+        Customer customer = new Customer(data.getId(), data.getName(), data.getEmail(),data.getImage(), data.getCpf(), data.getPassword());
         return customer;
     }
 }

@@ -33,6 +33,6 @@ public class UpdateCustomerService {
         return customer.orElseThrow(() -> new ObjectNotFoundException("Customer not found!"));
     }
     public Customer fromDTO(CustomerDTO data){
-        return new Customer(data.getId(),data.getName(),data.getEmail(),data.getCpf(),data.getPassword());
+        return new Customer(data.getId(),data.getName(),data.getEmail(),data.getImage(),data.getCpf(),data.getPassword());
     }
 }

@@ -19,6 +19,7 @@ public class Customer implements Serializable {
     private String name;
     @Column(unique = true)
     private String email;
+    private String image;
     private String cpf;
     private String password;
 }
